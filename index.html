@@ -1220,5 +1220,22 @@
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
   </audio>
 </div>
+  <!-- Lofi Player Logic -->
+<script>
+  function togglePlay() {
+    const audio = document.getElementById('lofiAudio');
+    const btn = document.getElementById('playBtn');
+    
+    if (audio.paused) {
+      audio.play();
+      btn.innerHTML = '⏸ Pause Lofi Vibes';
+      btn.style.borderColor = '#ff4b2b';
+    } else {
+      audio.pause();
+      btn.innerHTML = '🎵 Play Lofi Vibes';
+      btn.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+    }
+  }
+</script>
 </body>
 </html>
