@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChinguBRO — Anime Wallpapers, 4K/8K Wallpapers & Cozy Digital Worlds</title>
+<meta name="description" content="Discover premium anime wallpapers, 4K and 8K backgrounds, live wallpapers, aesthetic video loops, cozy lo-fi ambience and cinematic digital worlds at ChinguBRO.">
+<meta name="theme-color" content="#050505">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ChinguBRO — Enter Your Favorite World">
+<meta property="og:description" content="Anime worlds. Cozy moments. Infinite imagination.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chingubro.com">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChinguBRO — Enter Your Favorite World">
+<meta name="twitter:description" content="Discover stunning wallpapers, cinematic loops, ambient sounds and premium digital worlds.">
+
+<link rel="canonical" href="https://chingubro.com">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ChinguBRO",
+  "url": "https://chingubro.com",
+  "description": "Premium anime wallpapers, 4K/8K backgrounds, live wallpapers and cozy digital worlds."
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --black:#050505;
+    --charcoal:#0B0B0F;
+    --charcoal-2:#111116;
+    --white:#FFFFFF;
+    --gray:#A7A7B0;
+    --gray-dim:#6E6E78;
+    --red:#E5092F;
+    --crimson:#8B001B;
+
+    --glass-bg: rgba(255,255,255,0.045);
+    --glass-bg-strong: rgba(255,255,255,0.07);
+    --glass-border: rgba(255,255,255,0.09);
+    --glass-border-strong: rgba(255,255,255,0.16);
+    --glass-blur: blur(18px);
+
+    --font-display: 'Cormorant Garamond', serif;
+    --font-ui: 'Manrope', sans-serif;
+
+    --ease: cubic-bezier(.22,.9,.3,1);
+    --dur-fast: .25s;
+    --dur-med: .55s;
+    --dur-slow: 1.1s;
+  }
+
+  html{ color-scheme: dark; scroll-behavior: smooth; }
+  html.reduce-motion, html.reduce-motion *{ scroll-behavior:auto !important; animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-ui);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{ font-family:var(--font-display); font-weight:600; letter-spacing:.01em; }
+
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+  ul{ list-style:none; }
+  img,svg{ display:block; max-width:100%; }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0; z-index:999;
+    background:var(--red); color:var(--white); padding:.8rem 1.2rem; border-radius:0 0 8px 0;
+  }
+  .skip-link:focus{ left:0; }
+
+  :focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:4px; }
+
+  .container{ max-width:1320px; margin:0 auto; padding:0 clamp(1.25rem, 4vw, 3rem); }
+
+  /* ---------- Ambient particle canvas ---------- */
+  #particles{ position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.55; }
+
+  /* ---------- Glass panel base ---------- */
+  .glass{
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.06),
+      0 20px 60px -30px rgba(0,0,0,.8);
+    position:relative;
+  }
+  .glass::before{
+    content:"";
+    position:absolute; inset:0; border-radius:inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,.06), transparent 40%);
+    pointer-events:none;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+    background: rgba(5,5,5,.55);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(140%);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .logo{
+    font-family:var(--font-display); font-size:1.55rem; font-weight:700;
+    letter-spacing:.02em;
+  }
+  .logo span{ color:var(--red); }
+
+  .nav-links{ display:flex; gap:1.9rem; }
+  .nav-links a{
+    font-size:.86rem; font-weight:500; color:var(--gray);
+    position:relative; padding:.3rem 0;
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px;
+    background:var(--red); transition:width var(--dur-fast) var(--ease);
+  }
+  .nav-links a:hover{ color:var(--white); }
+  .nav-links a:hover::after{ width:100%; }
+
+  .nav-icons{ display:flex; align-items:center; gap:.35rem; }
+  .icon-btn{
+    width:38px; height:38px; display:flex; align-items:center; justify-content:center;
+    border-radius:11px; color:var(--gray);
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  }
+  .icon-btn:hover{ background:var(--glass-bg-strong); color:var(--white); }
+  .icon-btn svg{ width:19px; height:19px; }
+  .icon-btn.is-active svg{ stroke:var(--red); fill:var(--red); }
+
+  .search-wrap{ position:relative; display:flex; align-items:center; }
+  .search-input{
+    width:0; opacity:0; padding:0; border:none;
+    background: var(--glass-bg-strong); color:var(--white); border-radius:11px;
+    font-size:.85rem; transition: width var(--dur-med) var(--ease), padding var(--dur-med) var(--ease), opacity var(--dur-fast) var(--ease);
+  }
+  .search-wrap.open .search-input{ width:220px; padding:.55rem .9rem; opacity:1; margin-right:.25rem; }
+  .search-input::placeholder{ color:var(--gray-dim); }
+
+  .burger{ display:none; }
+
+  /* mobile menu */
+  .mobile-menu{
+    position:fixed; inset:0 0 0 auto; width:min(86vw,340px); z-index:200;
+    background: rgba(8,8,10,.85); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+    border-left:1px solid var(--glass-border);
+    transform: translateX(100%); transition: transform var(--dur-med) var(--ease);
+    padding: 1.5rem; display:flex; flex-direction:column; gap:1.5rem;
+  }
+  .mobile-menu.open{ transform:translateX(0); }
+  .mobile-menu a{ font-size:1.05rem; color:var(--gray); padding:.4rem 0; }
+  .mobile-menu a:hover{ color:var(--white); }
+  .mobile-menu-close{ align-self:flex-end; }
+  .scrim{
+    position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:190;
+    opacity:0; pointer-events:none; transition:opacity var(--dur-med) var(--ease);
+  }
+  .scrim.show{ opacity:1; pointer-events:auto; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; min-height:92vh; display:flex; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden; padding: 6rem 1.5rem 4rem;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:-1;
+    background:
+      radial-gradient(ellipse 60% 45% at 25% 15%, rgba(229,9,47,.16), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 10%, rgba(139,0,27,.22), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 50% 100%, rgba(229,9,47,.10), transparent 65%),
+      linear-gradient(180deg, #08080a 0%, #050505 55%, #050505 100%);
+  }
+  .hero-bg::after{
+    content:""; position:absolute; inset:0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 80% 30%, rgba(255,255,255,.4), transparent),
+      radial-gradient(1.5px 1.5px at 60% 70%, rgba(255,255,255,.35), transparent),
+      radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,.3), transparent),
+      radial-gradient(1px 1px at 90% 85%, rgba(255,255,255,.4), transparent);
+    opacity:.6;
+  }
+
+  .hero-shard{
+    position:absolute; border-radius:28px;
+    background: linear-gradient(155deg, rgba(255,255,255,.09), rgba(255,255,255,.01));
+    border:1px solid rgba(255,255,255,.12);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    animation: float 9s ease-in-out infinite;
+  }
+  .hero-shard.s1{ width:150px; height:190px; top:14%; left:8%; animation-delay:0s; transform:rotate(-8deg); }
+  .hero-shard.s2{ width:110px; height:140px; top:60%; left:14%; animation-delay:2.4s; transform:rotate(10deg); }
+  .hero-shard.s3{ width:130px; height:170px; top:20%; right:10%; animation-delay:1.1s; transform:rotate(6deg); }
+  .hero-shard.s4{ width:90px; height:120px; bottom:14%; right:16%; animation-delay:3.2s; transform:rotate(-12deg); }
+  @keyframes float{
+    0%,100%{ transform:translateY(0) rotate(var(--r,0deg)); }
+    50%{ transform:translateY(-18px) rotate(var(--r,0deg)); }
+  }
+
+  .moon-btn{
+    position:absolute; top:12%; left:50%; transform:translateX(-50%);
+    width:56px; height:56px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #fff, #d9d9df 60%, #A7A7B0 100%);
+    box-shadow: 0 0 40px 6px rgba(229,9,47,.0);
+    transition: box-shadow 1.2s var(--ease), background 1.2s var(--ease);
+  }
+  .moon-btn:hover{ box-shadow: 0 0 46px 10px rgba(229,9,47,.35); }
+  body.eclipse .moon-btn{ background: radial-gradient(circle at 35% 30%, #ffb9b9, #E5092F 55%, #8B001B 100%); box-shadow:0 0 60px 14px rgba(229,9,47,.5); }
+  body.eclipse .hero-bg{ filter:hue-rotate(6deg) saturate(1.15); }
+
+  .eyebrow-tag{
+    font-family:var(--font-ui); font-size:.78rem; color:var(--gray);
+    letter-spacing:.04em; margin-bottom:1.4rem; display:inline-flex; align-items:center; gap:.5rem;
+  }
+  .eyebrow-tag .dot{ width:6px; height:6px; border-radius:50%; background:var(--red); box-shadow:0 0 10px 2px rgba(229,9,47,.6); }
+
+  .hero h1{
+    font-size: clamp(3.2rem, 9vw, 6.4rem); line-height:1; font-weight:700;
+    background: linear-gradient(180deg, #fff 30%, #cfcfd6 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero .subtitle{
+    font-family:var(--font-display); font-style:italic; font-weight:500;
+    font-size: clamp(1.3rem, 2.6vw, 1.9rem); color:#f0eef0; margin-top:1.1rem;
+  }
+  .hero .support{
+    max-width:540px; margin: 1.4rem auto 0; color:var(--gray); font-size:1.02rem;
+  }
+
+  .btn-row{ display:flex; flex-wrap:wrap; gap:.9rem; justify-content:center; margin-top:2.6rem; }
+  .btn{
+    font-size:.9rem; font-weight:600; padding:.9rem 1.7rem; border-radius:13px;
+    transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+    display:inline-flex; align-items:center; gap:.55rem;
+  }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--red), var(--crimson));
+    color:var(--white); box-shadow: 0 8px 30px -8px rgba(229,9,47,.6);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 34px -6px rgba(229,9,47,.8); }
+  .btn-glass{
+    background: var(--glass-bg-strong); color:var(--white); border:1px solid var(--glass-border-strong);
+  }
+  .btn-glass:hover{ transform:translateY(-2px); background:rgba(255,255,255,.1); }
+  .btn-outline{
+    border:1px solid var(--glass-border-strong); color:var(--gray);
+  }
+  .btn-outline:hover{ color:var(--white); border-color:rgba(255,255,255,.3); }
+
+  /* ---------- Section shell ---------- */
+  section{ position:relative; padding: clamp(4rem, 8vw, 7rem) 0; }
+  .section-head{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:1rem;
+    margin-bottom: 2.4rem; flex-wrap:wrap;
+  }
+  .section-head h2{ font-size:clamp(1.9rem, 4vw, 2.6rem); }
+  .section-head p{ color:var(--gray); max-width:420px; font-size:.95rem; }
+  .see-all{ font-size:.85rem; color:var(--red); font-weight:600; white-space:nowrap; }
+  .see-all:hover{ color:#ff5470; }
+
+  /* ---------- Rail / grid ---------- */
+  .rail{
+    display:flex; gap:1.3rem; overflow-x:auto; padding-bottom:1rem; scroll-snap-type:x mandatory;
+    scrollbar-width:thin; scrollbar-color: var(--glass-border-strong) transparent;
+  }
+  .rail::-webkit-scrollbar{ height:6px; }
+  .rail::-webkit-scrollbar-thumb{ background:var(--glass-border-strong); border-radius:6px; }
+  .rail > *{ scroll-snap-align:start; flex:0 0 auto; }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:1.3rem;
+  }
+
+  /* ---------- Wallpaper card ---------- */
+  .card{
+    width:230px; border-radius:20px; overflow:hidden; position:relative;
+    border:1px solid var(--glass-border); background:var(--charcoal);
+    transition: transform var(--dur-med) var(--ease), border-color var(--dur-fast) var(--ease);
+  }
+  .card:hover{ transform:translateY(-6px); border-color:var(--glass-border-strong); }
+  .card-media{
+    aspect-ratio: 3/4; position:relative; overflow:hidden;
+  }
+  .card-media img.ph, .card-media .ph{
+    position:absolute; inset:0; width:100%; height:100%;
+    transition: transform var(--dur-slow) var(--ease);
+  }
+  .card:hover .card-media .ph{ transform:scale(1.08); }
+
+  /* Original gradient "atmosphere" placeholders — stand-ins for licensed artwork */
+  .ph-fantasy{ background: radial-gradient(circle at 30% 20%, #3a2540, transparent 60%), radial-gradient(circle at 80% 80%, #5c1620, transparent 55%), linear-gradient(200deg,#120a14,#050505 70%); }
+  .ph-ghibli{ background: radial-gradient(circle at 70% 15%, #23342b, transparent 55%), radial-gradient(circle at 20% 85%, #1c2a1f, transparent 60%), linear-gradient(200deg,#0e1512,#050505 75%); }
+  .ph-cyber{ background: radial-gradient(circle at 75% 25%, #3d0a18, transparent 55%), radial-gradient(circle at 15% 75%, #1a0d2e, transparent 55%), linear-gradient(200deg,#100613,#050505 75%); }
+  .ph-cozy{ background: radial-gradient(circle at 60% 30%, #3a2418, transparent 55%), radial-gradient(circle at 20% 80%, #2a1c14, transparent 60%), linear-gradient(200deg,#110c08,#050505 75%); }
+  .ph-cultivation{ background: radial-gradient(circle at 50% 10%, #2c1c3a, transparent 60%), radial-gradient(circle at 85% 75%, #481018, transparent 55%), linear-gradient(200deg,#0d0912,#050505 75%); }
+  .ph-nature{ background: radial-gradient(circle at 30% 20%, #142a1e, transparent 55%), radial-gradient(circle at 80% 70%, #0f2436, transparent 55%), linear-gradient(200deg,#0a0f0d,#050505 75%); }
+
+  .ph::after{
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.7), transparent),
+      radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,.4), transparent);
+  }
+
+  .badge{
+    position:absolute; top:.7rem; left:.7rem; font-size:.68rem; font-weight:700;
+    padding:.32rem .6rem; border-radius:8px; background:rgba(5,5,5,.55);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .badge.premium{
+    background: linear-gradient(135deg, rgba(229,9,47,.85), rgba(139,0,27,.85));
+    border-color: rgba(255,255,255,.2); box-shadow:0 0 14px -2px rgba(229,9,47,.7);
+  }
+
+  .fav-btn{
+    position:absolute; top:.7rem; right:.7rem; width:32px; height:32px; border-radius:9px;
+    background:rgba(5,5,5,.55); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.14);
+    display:flex; align-items:center; justify-content:center;
+    transition: background var(--dur-fast) var(--ease);
+  }
+  .fav-btn svg{ width:15px; height:15px; stroke:var(--white); fill:none; transition: fill var(--dur-fast), stroke var(--dur-fast); }
+  .fav-btn.active svg{ fill:var(--red); stroke:var(--red); }
+  .fav-btn:hover{ background:rgba(20,20,22,.75); }
+
+  .card-overlay{
+    position:absolute; left:0; right:0; bottom:0; padding:.9rem;
+    background: linear-gradient(0deg, rgba(0,0,0,.85), rgba(0,0,0,0));
+    transform: translateY(60%); opacity:0;
+    transition: transform var(--dur-med) var(--ease), opacity var(--dur-med) var(--ease);
+  }
+  .card:hover .card-overlay{ transform:translateY(0); opacity:1; }
+  .card-overlay .ov-actions{ display:flex; gap:.5rem; margin-top:.6rem; }
+  .card-overlay .ov-actions button{
+    flex:1; font-size:.72rem; font-weight:700; padding:.5rem .4rem; border-radius:9px;
+    background: var(--glass-bg-strong); border:1px solid var(--glass-border-strong);
+  }
+  .card-overlay .ov-actions button.primary{ background:linear-gradient(135deg, var(--red), var(--crimson)); border-color:transparent; }
+
+  .card-info{ padding:.85rem .95rem; }
+  .card-info .title{ font-size:.88rem; font-weight:600; }
+  .card-info .meta{ font-size:.72rem; color:var(--gray-dim); margin-top:.25rem; }
+
+  /* Live wallpaper motion shimmer */
+  .ph-live::before{
+    content:""; position:absolute; inset:-40%;
+    background: conic-gradient(from 0deg, transparent, rgba(229,9,47,.18), transparent 40%);
+    animation: spin 7s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  /* ---------- Cozy Room ---------- */
+  .cozy-panel{
+    border-radius:32px; overflow:hidden; position:relative; min-height:460px;
+    display:flex; align-items:flex-end;
+    background:
+      radial-gradient(ellipse 70% 50% at 75% 0%, rgba(229,9,47,.10), transparent 60%),
+      radial-gradient(ellipse 60% 60% at 15% 100%, rgba(139,0,27,.14), transparent 60%),
+      linear-gradient(200deg, #0d0a0c, #08080a 70%);
+    border:1px solid var(--glass-border);
+  }
+  .rain-window{
+    position:absolute; top:8%; right:8%; width:150px; height:200px; border-radius:14px;
+    background: linear-gradient(200deg, #1a1420, #0a0810);
+    border:2px solid rgba(255,255,255,.12); overflow:hidden;
+    box-shadow: inset 0 0 30px rgba(0,0,0,.6);
+  }
+  .rain-window::before{
+    content:""; position:absolute; inset:-20%;
+    background-image: repeating-linear-gradient(100deg, transparent 0 6px, rgba(255,255,255,.10) 7px 8px);
+    animation: rain 1.4s linear infinite;
+  }
+  @keyframes rain{ from{ transform:translateY(-15%); } to{ transform:translateY(15%); } }
+  .rain-window::after{ content:""; position:absolute; inset:0; box-shadow: inset 0 0 40px 6px rgba(229,9,47,.08); }
+  .window-grid{ position:absolute; inset:0; }
+  .window-grid span{ position:absolute; background:rgba(255,255,255,.1); }
+  .window-grid .h{ left:0; right:0; top:50%; height:2px; }
+  .window-grid .v{ top:0; bottom:0; left:50%; width:2px; }
+
+  .cozy-copy{ position:relative; padding:2.6rem clamp(1.5rem,4vw,3rem); max-width:520px; }
+  .cozy-copy h2{ font-size:clamp(1.8rem,3.6vw,2.4rem); margin-bottom:.7rem; }
+  .cozy-copy p{ color:var(--gray); font-size:.95rem; margin-bottom:1.6rem; }
+
+  .player{
+    display:flex; align-items:center; gap:1rem; padding:.9rem 1.1rem; border-radius:18px;
+    max-width:420px;
+  }
+  .play-btn{
+    width:44px; height:44px; border-radius:50%; flex:0 0 auto;
+    background:linear-gradient(135deg, var(--red), var(--crimson));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 22px -6px rgba(229,9,47,.7);
+  }
+  .play-btn svg{ width:16px; height:16px; fill:#fff; }
+  .player-body{ flex:1; min-width:0; }
+  .player-track{ font-size:.82rem; font-weight:600; }
+  .player-sub{ font-size:.7rem; color:var(--gray-dim); margin-bottom:.4rem; }
+  .progress{ height:3px; border-radius:3px; background:rgba(255,255,255,.12); overflow:hidden; }
+  .progress i{ display:block; height:100%; width:32%; background:var(--red); border-radius:3px; }
+  body:not(.reduce-motion) .player.playing .progress i{ animation: prog 18s linear infinite; }
+  @keyframes prog{ from{ width:0%; } to{ width:100%; } }
+  .player-icons{ display:flex; gap:.35rem; flex:0 0 auto; }
+  .player-icons button{ width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:8px; color:var(--gray); }
+  .player-icons button:hover{ background:rgba(255,255,255,.06); color:#fff; }
+  .player-icons svg{ width:14px; height:14px; }
+
+  /* ---------- Ambient mixer ---------- */
+  .mixer-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:1rem; }
+  .mixer-tile{
+    border-radius:18px; padding:1.1rem; text-align:left; width:100%;
+    display:flex; flex-direction:column; gap:.7rem;
+    transition: border-color var(--dur-fast) var(--ease);
+  }
+  .mixer-tile .top{ display:flex; align-items:center; justify-content:space-between; }
+  .mixer-tile .emoji{ font-size:1.3rem; }
+  .mixer-tile .name{ font-size:.85rem; font-weight:600; }
+  .mixer-tile .toggle{
+    width:38px; height:22px; border-radius:20px; background:rgba(255,255,255,.12); position:relative; flex:0 0 auto;
+    transition: background var(--dur-fast) var(--ease);
+  }
+  .mixer-tile .toggle::after{
+    content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%;
+    background:#fff; transition: transform var(--dur-fast) var(--ease);
+  }
+  .mixer-tile.active{ border-color: rgba(229,9,47,.4); box-shadow:0 0 24px -10px rgba(229,9,47,.5); }
+  .mixer-tile.active .toggle{ background: linear-gradient(135deg, var(--red), var(--crimson)); }
+  .mixer-tile.active .toggle::after{ transform:translateX(16px); }
+  .mixer-slider-wrap{ max-height:0; overflow:hidden; transition: max-height var(--dur-med) var(--ease); }
+  .mixer-tile.active .mixer-slider-wrap{ max-height:40px; }
+  .mixer-slider{ width:100%; accent-color:var(--red); }
+  .mixer-visualizer{ display:flex; align-items:flex-end; gap:2px; height:16px; }
+  .mixer-visualizer i{ flex:1; background:var(--red); border-radius:2px; opacity:.35; height:30%; }
+  .mixer-tile.active .mixer-visualizer i{ opacity:.9; animation: viz 1s ease-in-out infinite; }
+  .mixer-visualizer i:nth-child(2){ animation-delay:.1s; }
+  .mixer-visualizer i:nth-child(3){ animation-delay:.2s; }
+  .mixer-visualizer i:nth-child(4){ animation-delay:.3s; }
+  .mixer-visualizer i:nth-child(5){ animation-delay:.15s; }
+  @keyframes viz{ 0%,100%{ height:20%; } 50%{ height:100%; } }
+
+  .mixer-footer{ display:flex; justify-content:flex-end; margin-top:1.6rem; }
+
+  /* ---------- Premium ---------- */
+  .premium-card{
+    border-radius:22px; overflow:hidden; padding:1.4rem; position:relative;
+    border-color: rgba(229,9,47,.22);
+  }
+  .premium-card .card-media{ border-radius:14px; margin-bottom:1rem; }
+  .premium-card .price{ font-family:var(--font-display); font-size:1.6rem; font-weight:700; color:#fff; }
+  .premium-card .title{ font-size:1rem; font-weight:700; margin-top:.9rem; }
+  .premium-card .desc{ font-size:.78rem; color:var(--gray-dim); margin:.3rem 0 1rem; }
+  .premium-card .buy-row{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+
+  /* ---------- YouTube panel ---------- */
+  .yt-panel{
+    border-radius:28px; padding: clamp(2rem,5vw,3.5rem); text-align:center;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 120%, rgba(229,9,47,.16), transparent 60%),
+      linear-gradient(180deg, #0c0a0b, #08080a);
+  }
+  .yt-panel h2{ font-size:clamp(1.9rem,4vw,2.6rem); margin-bottom:.5rem; }
+  .yt-panel .meta-line{ color:var(--gray); font-size:.9rem; margin-bottom:1.8rem; }
+
+  /* ---------- Newsletter ---------- */
+  .newsletter{
+    border-radius:26px; padding:clamp(2rem,5vw,3rem); display:flex; align-items:center; justify-content:space-between;
+    gap:2rem; flex-wrap:wrap;
+  }
+  .newsletter h3{ font-size:1.5rem; margin-bottom:.4rem; }
+  .newsletter p{ color:var(--gray); font-size:.88rem; max-width:340px; }
+  .nl-form{ display:flex; gap:.6rem; flex:1; min-width:260px; max-width:420px; }
+  .nl-form input{
+    flex:1; padding:.85rem 1rem; border-radius:12px; border:1px solid var(--glass-border-strong);
+    background:rgba(255,255,255,.04); color:#fff; font-size:.85rem;
+  }
+  .nl-form input::placeholder{ color:var(--gray-dim); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid rgba(255,255,255,.07); padding: 3.5rem 0 2rem; margin-top:2rem;
+  }
+  .footer-top{ display:flex; flex-wrap:wrap; gap:3rem; justify-content:space-between; margin-bottom:2.5rem; }
+  .footer-brand .logo{ margin-bottom:.7rem; }
+  .footer-brand p{ color:var(--gray); font-family:var(--font-display); font-style:italic; font-size:1.05rem; max-width:260px; }
+  .footer-cols{ display:flex; gap:3rem; flex-wrap:wrap; }
+  .footer-col h4{ font-size:.78rem; letter-spacing:.03em; color:var(--gray-dim); margin-bottom:.9rem; font-weight:700; }
+  .footer-col a{ display:block; font-size:.85rem; color:var(--gray); padding:.28rem 0; }
+  .footer-col a:hover{ color:#fff; }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+    padding-top:1.6rem; border-top:1px solid rgba(255,255,255,.06);
+    font-size:.78rem; color:var(--gray-dim);
+  }
+  .footer-social{ display:flex; gap:.6rem; }
+
+  /* ---------- Settings popover ---------- */
+  .settings-pop{
+    position:fixed; bottom:1.4rem; right:1.4rem; z-index:150; width:250px; border-radius:18px; padding:1.1rem;
+    transform: translateY(20px) scale(.97); opacity:0; pointer-events:none;
+    transition: all var(--dur-med) var(--ease);
+  }
+  .settings-pop.open{ transform:translateY(0) scale(1); opacity:1; pointer-events:auto; }
+  .settings-pop h4{ font-size:.8rem; margin-bottom:.8rem; color:var(--gray); font-weight:700; letter-spacing:.02em; }
+  .setting-row{ display:flex; align-items:center; justify-content:space-between; padding:.5rem 0; font-size:.82rem; }
+  .mini-toggle{ width:34px; height:20px; border-radius:20px; background:rgba(255,255,255,.12); position:relative; }
+  .mini-toggle::after{ content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; transition:transform var(--dur-fast); }
+  .mini-toggle.on{ background:linear-gradient(135deg,var(--red),var(--crimson)); }
+  .mini-toggle.on::after{ transform:translateX(14px); }
+  .fab-settings{
+    position:fixed; bottom:1.4rem; right:1.4rem; z-index:151; width:48px; height:48px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; color:var(--gray);
+    box-shadow:0 10px 30px -8px rgba(0,0,0,.7);
+  }
+  .fab-settings svg{ width:19px; height:19px; }
+  .fab-settings.shift{ bottom:15.5rem; }
+
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .burger{ display:flex; }
+    .search-wrap.open .search-input{ width:140px; }
+  }
+  @media (max-width:600px){
+    .cozy-panel{ flex-direction:column; }
+    .rain-window{ position:static; margin:1.4rem 1.4rem 0 auto; }
+    .newsletter{ flex-direction:column; align-items:flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001s !important; transition-duration:.001s !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="logo">Chingu<span>BRO</span></a>
+
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#wallpapers">Wallpapers</a></li>
+    <li><a href="#live">Live Wallpapers</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#cozy">Lo-Fi</a></li>
+    <li><a href="#mixer">Ambient</a></li>
+    <li><a href="#gifts">Gifts</a></li>
+    <li><a href="#premium">Premium</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+
+  <div class="nav-icons">
+    <div class="search-wrap" id="searchWrap">
+      <input class="search-input" id="searchInput" type="text" placeholder="Search 4K night, cozy room…" aria-label="Search ChinguBRO">
+      <button class="icon-btn" id="searchBtn" aria-label="Toggle search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+    </div>
+    <button class="icon-btn" aria-label="Favorites">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L21 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
+    </button>
+    <button class="icon-btn burger" id="burgerBtn" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+<div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <button class="icon-btn mobile-menu-close" id="mobileClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <a href="#">Home</a>
+  <a href="#wallpapers">Wallpapers</a>
+  <a href="#live">Live Wallpapers</a>
+  <a href="#videos">Videos</a>
+  <a href="#cozy">Lo-Fi</a>
+  <a href="#mixer">Ambient</a>
+  <a href="#gifts">Gifts</a>
+  <a href="#premium">Premium</a>
+  <a href="#about">About</a>
+</div>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-shard s1" aria-hidden="true"></div>
+    <div class="hero-shard s2" aria-hidden="true"></div>
+    <div class="hero-shard s3" aria-hidden="true"></div>
+    <div class="hero-shard s4" aria-hidden="true"></div>
+    <button class="moon-btn" id="moonBtn" aria-label="A quiet eclipse"></button>
+
+    <div>
+      <span class="eyebrow-tag"><span class="dot"></span>Enter Your Favorite World</span>
+      <h1>ChinguBRO</h1>
+      <p class="subtitle">Anime worlds. Cozy moments. Infinite imagination.</p>
+      <p class="support">Discover stunning wallpapers, cinematic loops, ambient sounds and premium digital worlds.</p>
+
+      <div class="btn-row">
+        <a href="#wallpapers" class="btn btn-primary">Explore Wallpapers</a>
+        <a href="#cozy" class="btn btn-glass">Enter the Cozy Room</a>
+        <a href="https://www.youtube.com/@ChinguBRO?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-outline">Watch on YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING WALLPAPERS -->
+  <section id="wallpapers">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Trending Wallpapers</h2>
+          <p>Fresh worlds, picked by the community this week.</p>
+        </div>
+        <a class="see-all" href="#">See all wallpapers</a>
+      </div>
+
+      <div class="rail">
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-fantasy"></div>
+            <span class="badge">4K</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+            <div class="card-overlay">
+              <div class="ov-actions">
+                <button>Preview</button>
+                <button class="primary">Download</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="title">Floating Temple at Dusk</div>
+            <div class="meta">Fantasy · 3840×2160 · Free</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-ghibli"></div>
+            <span class="badge premium">Premium 8K</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+            <div class="card-overlay">
+              <div class="ov-actions">
+                <button>Preview</button>
+                <button class="primary">$2.99</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="title">Moonlit Forest Path</div>
+            <div class="meta">Ghibli-inspired · 7680×4320</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-cyber"></div>
+            <span class="badge">2K</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+            <div class="card-overlay">
+              <div class="ov-actions">
+                <button>Preview</button>
+                <button class="primary">Download</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="title">Neon Alley, Rainfall</div>
+            <div class="meta">Cyberpunk · 2560×1440 · Free</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-cultivation"></div>
+            <span class="badge premium">Premium 4K</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+            <div class="card-overlay">
+              <div class="ov-actions">
+                <button>Preview</button>
+                <button class="primary">$1.99</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="title">Ascension, Cloud Peaks</div>
+            <div class="meta">Cultivation · 3840×2160</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-cozy"></div>
+            <span class="badge">FHD</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+            <div class="card-overlay">
+              <div class="ov-actions">
+                <button>Preview</button>
+                <button class="primary">Download</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="title">Study Desk, Rain Outside</div>
+            <div class="meta">Cozy · 1920×1080 · Free</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE WALLPAPERS -->
+  <section id="live">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Live Wallpapers</h2>
+          <p>Motion-driven scenes for your desktop and lock screen.</p>
+        </div>
+        <a class="see-all" href="#">See all live wallpapers</a>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-cyber ph-live"></div>
+            <span class="badge">60 FPS</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+          </div>
+          <div class="card-info">
+            <div class="title">Night City Drift</div>
+            <div class="meta">Cyberpunk · 4K · 42 MB · Free</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-fantasy ph-live"></div>
+            <span class="badge premium">Premium</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+          </div>
+          <div class="card-info">
+            <div class="title">Floating Isles</div>
+            <div class="meta">Fantasy · 4K · $2.49</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-cozy ph-live"></div>
+            <span class="badge">30 FPS</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+          </div>
+          <div class="card-info">
+            <div class="title">Lofi Room, Rain</div>
+            <div class="meta">Cozy · 1080p · 18 MB · Free</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <div class="ph ph-cultivation ph-live"></div>
+            <span class="badge premium">Premium</span>
+            <button class="fav-btn" aria-label="Add to favorites" onclick="toggleFav(this)">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg>
+            </button>
+          </div>
+          <div class="card-info">
+            <div class="title">Chinese Fantasy Skies</div>
+            <div class="meta">Cultivation · 4K · $3.49</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COZY ROOM -->
+  <section id="cozy">
+    <div class="container">
+      <div class="cozy-panel glass">
+        <div class="rain-window">
+          <div class="window-grid"><span class="h"></span><span class="v"></span></div>
+        </div>
+        <div class="cozy-copy">
+          <span class="eyebrow-tag"><span class="dot"></span>The Cozy Room</span>
+          <h2>A quiet corner of your favorite world.</h2>
+          <p>Rain against the glass, a lamp on the desk, and lo-fi drifting through the room. Stay a while.</p>
+
+          <div class="player glass" id="player">
+            <button class="play-btn" id="playBtn" aria-label="Play">
+              <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="player-body">
+              <div class="player-track">Midnight Study — Lo-Fi Mix</div>
+              <div class="player-sub">Cozy Lo-Fi · Rain</div>
+              <div class="progress"><i></i></div>
+            </div>
+            <div class="player-icons">
+              <button aria-label="Previous track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+              <button aria-label="Next track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z"/></svg></button>
+              <button aria-label="Volume"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9v6h4l5 5V4L8 9z"/></svg></button>
+            </div>
+          </div>
+
+          <div class="btn-row" style="justify-content:flex-start; margin-top:1.8rem;">
+            <a href="#mixer" class="btn btn-glass">Open Ambient Mixer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMBIENT MIXER -->
+  <section id="mixer">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Ambient Sound Mixer</h2>
+          <p>Layer sounds, tune each volume, and save the mix that fits your evening.</p>
+        </div>
+      </div>
+
+      <div class="mixer-grid">
+        <button class="mixer-tile glass" onclick="toggleMixer(this)">
+          <div class="top"><span class="emoji">🌧</span><span class="toggle"></span></div>
+          <span class="name">Rain</span>
+          <div class="mixer-visualizer"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mixer-slider-wrap"><input class="mixer-slider" type="range" min="0" max="100" value="60" aria-label="Rain volume"></div>
+        </button>
+
+        <button class="mixer-tile glass" onclick="toggleMixer(this)">
+          <div class="top"><span class="emoji">🔥</span><span class="toggle"></span></div>
+          <span class="name">Fireplace</span>
+          <div class="mixer-visualizer"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mixer-slider-wrap"><input class="mixer-slider" type="range" min="0" max="100" value="40" aria-label="Fireplace volume"></div>
+        </button>
+
+        <button class="mixer-tile glass" onclick="toggleMixer(this)">
+          <div class="top"><span class="emoji">🌊</span><span class="toggle"></span></div>
+          <span class="name">Ocean</span>
+          <div class="mixer-visualizer"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mixer-slider-wrap"><input class="mixer-slider" type="range" min="0" max="100" value="50" aria-label="Ocean volume"></div>
+        </button>
+
+        <button class="mixer-tile glass" onclick="toggleMixer(this)">
+          <div class="top"><span class="emoji">🌲</span><span class="toggle"></span></div>
+          <span class="name">Forest</span>
+          <div class="mixer-visualizer"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mixer-slider-wrap"><input class="mixer-slider" type="range" min="0" max="100" value="45" aria-label="Forest volume"></div>
+        </button>
+
+        <button class="mixer-tile glass" onclick="toggleMixer(this)">
+          <div class="top"><span class="emoji">☕</span><span class="toggle"></span></div>
+          <span class="name">Cafe</span>
+          <div class="mixer-visualizer"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mixer-slider-wrap"><input class="mixer-slider" type="range" min="0" max="100" value="35" aria-label="Cafe volume"></div>
+        </button>
+
+        <button class="mixer-tile glass" onclick="toggleMixer(this)">
+          <div class="top"><span class="emoji">🌌</span><span class="toggle"></span></div>
+          <span class="name">Night</span>
+          <div class="mixer-visualizer"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mixer-slider-wrap"><input class="mixer-slider" type="range" min="0" max="100" value="30" aria-label="Night ambience volume"></div>
+        </button>
+
+        <button class="mixer-tile glass" onclick="toggleMixer(this)">
+          <div class="top"><span class="emoji">⛈</span><span class="toggle"></span></div>
+          <span class="name">Thunder</span>
+          <div class="mixer-visualizer"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mixer-slider-wrap"><input class="mixer-slider" type="range" min="0" max="100" value="25" aria-label="Thunder volume"></div>
+        </button>
+
+        <button class="mixer-tile glass" onclick="toggleMixer(this)">
+          <div class="top"><span class="emoji">📖</span><span class="toggle"></span></div>
+          <span class="name">Library</span>
+          <div class="mixer-visualizer"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mixer-slider-wrap"><input class="mixer-slider" type="range" min="0" max="100" value="20" aria-label="Library volume"></div>
+        </button>
+      </div>
+
+      <div class="mixer-footer">
+        <button class="btn btn-primary" id="saveAtmosphere">Save Atmosphere</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM -->
+  <section id="premium">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>ChinguBRO Premium</h2>
+          <p>Exclusive 4K/8K collections, live wallpapers and art packs.</p>
+        </div>
+        <a class="see-all" href="#">Browse premium</a>
+      </div>
+
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));">
+        <article class="premium-card glass">
+          <div class="card-media" style="aspect-ratio:16/10;"><div class="ph ph-cultivation"></div></div>
+          <div class="title">Celestial Night — 8K Wallpaper</div>
+          <p class="desc">A quiet cultivation-inspired skyline, rendered for ultra-wide and 8K displays.</p>
+          <div class="buy-row">
+            <span class="price">$2.99</span>
+            <button class="btn btn-primary">Download / Buy</button>
+          </div>
+        </article>
+
+        <article class="premium-card glass">
+          <div class="card-media" style="aspect-ratio:16/10;"><div class="ph ph-ghibli"></div></div>
+          <div class="title">Windswept Valley Pack</div>
+          <p class="desc">Twelve Ghibli-inspired 4K wallpapers with matching lo-fi ambience.</p>
+          <div class="buy-row">
+            <span class="price">$4.49</span>
+            <button class="btn btn-primary">Download / Buy</button>
+          </div>
+        </article>
+
+        <article class="premium-card glass">
+          <div class="card-media" style="aspect-ratio:16/10;"><div class="ph ph-cyber"></div></div>
+          <div class="title">Neon District — Live Set</div>
+          <p class="desc">Three looping live wallpapers built for 4K desktop and lock screens.</p>
+          <div class="buy-row">
+            <span class="price">$3.99</span>
+            <button class="btn btn-primary">Download / Buy</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section id="videos">
+    <div class="container">
+      <div class="yt-panel glass">
+        <h2>Follow the ChinguBRO journey</h2>
+        <p class="meta-line">Anime edits • Aesthetic worlds • Cozy moments • Digital art</p>
+        <a href="https://www.youtube.com/@ChinguBRO?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-primary">Subscribe on YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="gifts" style="padding-top:0;">
+    <div class="container">
+      <div class="newsletter glass">
+        <div>
+          <h3>Join the ChinguBRO circle</h3>
+          <p>New wallpapers, free gifts and cozy drops — straight to your inbox.</p>
+        </div>
+        <div class="nl-form">
+          <input type="email" placeholder="you@email.com" aria-label="Email address">
+          <button class="btn btn-primary" type="button" onclick="this.textContent='Joined ✓'">Join</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer id="about">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">Chingu<span>BRO</span></a>
+        <p>"Anime worlds. Cozy moments. Infinite imagination."</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#wallpapers">Wallpapers</a>
+          <a href="#live">Live Wallpapers</a>
+          <a href="#videos">Videos</a>
+          <a href="#cozy">Lo-Fi</a>
+          <a href="#mixer">Ambient</a>
+        </div>
+        <div class="footer-col">
+          <h4>ChinguBRO</h4>
+          <a href="#gifts">Gifts</a>
+          <a href="#premium">Premium</a>
+          <a href="#about">About</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Refund Policy</a>
+          <a href="#">DMCA / Copyright</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 ChinguBRO. All rights reserved.</span>
+      <div class="footer-social">
+        <a class="icon-btn" href="https://www.youtube.com/@ChinguBRO?sub_confirmation=1" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.46-5.3a3 3 0 00-2.1-2.1C18.7 4 12 4 12 4s-6.7 0-8.44.5a3 3 0 00-2.1 2.2C1 8.4 1 12 1 12s0 3.6.46 5.3a3 3 0 002.1 2.1C5.3 20 12 20 12 20s6.7 0 8.44-.5a3 3 0 002.1-2.2C23 15.6 23 12 23 12z"/><path d="M9.8 15.5l6-3.5-6-3.5z" fill="#050505"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SETTINGS -->
+<button class="fab-settings glass" id="settingsFab" aria-label="Open settings">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.9 2.9l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.6V21a2 2 0 11-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.9-2.9l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.9-2.9l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.2a1.7 1.7 0 001 1.6 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.9 2.9l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.6 1H21a2 2 0 110 4h-.2a1.7 1.7 0 00-1.4 1z"/></svg>
+</button>
+<div class="settings-pop glass" id="settingsPop">
+  <h4>Theme Settings</h4>
+  <div class="setting-row"><span>Reduce Motion</span><button class="mini-toggle" id="toggleMotion" onclick="toggleMini(this,'motion')"></button></div>
+  <div class="setting-row"><span>Auto-Play Videos</span><button class="mini-toggle on" onclick="toggleMini(this)"></button></div>
+  <div class="setting-row"><span>Ambient Audio</span><button class="mini-toggle on" onclick="toggleMini(this)"></button></div>
+  <div class="setting-row"><span>Dark Mode</span><button class="mini-toggle on" onclick="toggleMini(this)"></button></div>
+</div>
+
+<script>
+  // ---- Mobile menu ----
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  const scrim = document.getElementById('scrim');
+  function openMenu(){ mobileMenu.classList.add('open'); scrim.classList.add('show'); }
+  function closeMenu(){ mobileMenu.classList.remove('open'); scrim.classList.remove('show'); }
+  burgerBtn.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  scrim.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // ---- Search expand ----
+  const searchWrap = document.getElementById('searchWrap');
+  const searchBtn = document.getElementById('searchBtn');
+  const searchInput = document.getElementById('searchInput');
+  searchBtn.addEventListener('click', () => {
+    searchWrap.classList.toggle('open');
+    if(searchWrap.classList.contains('open')) searchInput.focus();
+  });
+
+  // ---- Favorite toggle ----
+  function toggleFav(btn){
+    btn.classList.toggle('active');
+  }
+
+  // ---- Ambient mixer ----
+  function toggleMixer(tile){
+    tile.classList.toggle('active');
+  }
+  document.getElementById('saveAtmosphere').addEventListener('click', function(){
+    const label = this.textContent;
+    this.textContent = 'Saved ✓';
+    setTimeout(() => this.textContent = label, 1800);
+  });
+
+  // ---- Audio player (visual state only — connect a real audio source to make it play) ----
+  const playBtn = document.getElementById('playBtn');
+  const playIcon = document.getElementById('playIcon');
+  const player = document.getElementById('player');
+  playBtn.addEventListener('click', () => {
+    const playing = player.classList.toggle('playing');
+    playIcon.innerHTML = playing
+      ? '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+    playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+  });
+
+  // ---- Moon easter egg ----
+  document.getElementById('moonBtn').addEventListener('click', () => {
+    document.body.classList.toggle('eclipse');
+  });
+
+  // ---- Settings popover ----
+  const settingsFab = document.getElementById('settingsFab');
+  const settingsPop = document.getElementById('settingsPop');
+  settingsFab.addEventListener('click', () => {
+    settingsPop.classList.toggle('open');
+    settingsFab.classList.toggle('shift');
+  });
+  function toggleMini(btn, kind){
+    btn.classList.toggle('on');
+    if(kind === 'motion'){
+      document.documentElement.classList.toggle('reduce-motion', btn.classList.contains('on'));
+    }
+  }
+  // Respect system preference on load
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.documentElement.classList.add('reduce-motion');
+    document.getElementById('toggleMotion').classList.add('on');
+  }
+
+  // ---- Hidden keyboard shortcut easter egg ----
+  let keys = '';
+  window.addEventListener('keydown', e => {
+    keys = (keys + e.key).slice(-1);
+    if (e.key.toLowerCase() === 'm' && e.altKey){
+      document.body.classList.toggle('eclipse');
+    }
+  });
+
+  // ---- Particle canvas ----
+  (function(){
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resize(){
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = Math.min(window.innerHeight, 900);
+    }
+    function init(){
+      resize();
+      const count = reduce ? 0 : Math.min(60, Math.floor(w/24));
+      particles = Array.from({length: count}, () => ({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*1.4 + 0.3,
+        s: Math.random()*0.25 + 0.05,
+        o: Math.random()*0.5 + 0.15
+      }));
+    }
+    function tick(){
+      ctx.clearRect(0,0,w,h);
+      particles.forEach(p => {
+        p.y -= p.s;
+        if(p.y < -5){ p.y = h+5; p.x = Math.random()*w; }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(255,255,255,${p.o})`;
+        ctx.fill();
+      });
+      if(!reduce) requestAnimationFrame(tick);
+    }
+    window.addEventListener('resize', init);
+    init();
+    if(!reduce) requestAnimationFrame(tick); else tick();
+  })();
+</script>
+</body>
+</html>
