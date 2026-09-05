@@ -1362,5 +1362,68 @@
     if (isPlaying) audioTrack.play();
   }
 </script>
+  <script>
+  let currentAnimeCategory = 'anime';
+  let animePage = 1;
+
+  // Auto Load Initial Wallpapers on Page Load
+  document.addEventListener("DOMContentLoaded", function() {
+    fetchAnimeWallpapers();
+  });
+
+  function filterAnime(category) {
+    currentAnimeCategory = category;
+    animePage = 1;
+    document.getElementById('animeWallpaperGrid').innerHTML = '';
+    
+    // Update active tab buttons UI
+    document.querySelectorAll('.anime-cat-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    fetchAnimeWallpapers();
+  }
+
+  function fetchAnimeWallpapers() {
+    const grid = document.getElementById('animeWallpaperGrid');
+    const loadBtn = document.getElementById('loadMoreAnimeBtn');
+    loadBtn.innerText = "Loading...";
+
+    // Public Wallhaven API for Pure Anime Wallpapers
+    const apiUrl = `https://wallhaven.cc/api/v1/search?q=${currentAnimeCategory}&categories=010&purity=100&sorting=views&order=desc&page=${animePage}`;
+
+    // Using CORS proxy to bypass API CORS restrictions
+    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`)
+      .then(res => res.json())
+      .then(data => {
+        const responseData = JSON.parse(data.contents);
+        const wallpapers = responseData.data;
+
+        wallpapers.forEach(wp => {
+          const card = document.createElement('div');
+          card.className = 'wallpaper-card';
+          
+          // Determine quality badge dynamically
+          let qualityText = wp.dimension_x >= 3840 ? '4K ULTRA HD' : (wp.dimension_x >= 2560 ? '2K QHD' : '1080P FULL HD');
+
+          card.innerHTML = `
+            <span class="quality-badge">${qualityText}</span>
+            <img src="${wp.thumbs.large}" alt="Anime Wallpaper" loading="lazy" style="width:100%; height:220px; object-fit:cover;">
+            <div class="wallpaper-overlay">
+              <span>${wp.resolution}</span>
+              <a href="${wp.path}" download target="_blank" class="dl-btn">Download HD</a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        animePage++;
+        loadBtn.innerText = "✨ Load More Anime Wallpapers";
+      })
+      .catch(err => {
+        console.error("API Error:", err);
+        loadBtn.innerText = "✨ Load More Anime Wallpapers";
+      });
+  }
+</script>
 </body>
 </html>
