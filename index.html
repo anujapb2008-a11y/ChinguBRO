@@ -914,67 +914,32 @@
 
   <!-- COZY ROOM -->
   <section id="cozy">
-    <!-- ANIME WALLPAPER GALLERY SECTION -->
+    <!-- ANIME WALLPAPER GALLERY SECTION (AUTOMATIC 300+ HD/4K ANIME) -->
 <section id="wallpapers" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
-  <div style="text-align: center; margin-bottom: 40px;">
+  <div style="text-align: center; margin-bottom: 30px;">
     <h2 style="font-size: 2.5rem; color: #fff; margin-bottom: 10px;">Anime Wallpaper Gallery</h2>
-    <p style="color: #aaa; font-size: 1rem;">Ultra HD & 4K Aesthetics for Your Desktop</p>
-  </div>
-
-  <div class="wallpaper-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+    <p style="color: #aaa; font-size: 1rem;">Ultra HD & 4K Anime Wallpapers Collection</p>
     
-    <!-- Wallpaper Item 1 -->
-    <div class="wallpaper-card">
-      <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800" alt="Lofi Anime Room" loading="lazy">
-      <div class="wallpaper-overlay">
-        <span>Lofi Study Room</span>
-        <a href="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1920" download target="_blank" class="dl-btn">Download 4K</a>
-      </div>
+    <!-- Category Filter Tabs -->
+    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+      <button class="anime-cat-btn active" onclick="filterAnime('anime')">All Anime</button>
+      <button class="anime-cat-btn" onclick="filterAnime('cyberpunk')">Cyberpunk</button>
+      <button class="anime-cat-btn" onclick="filterAnime('landscape')">Scenic</button>
+      <button class="anime-cat-btn" onclick="filterAnime('lofi')">Lofi Vibes</button>
+      <button class="anime-cat-btn" onclick="filterAnime('dark')">Dark & Edgy</button>
     </div>
-
-    <!-- Wallpaper Item 2 -->
-    <div class="wallpaper-card">
-      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" alt="Neon Cyberpunk City" loading="lazy">
-      <div class="wallpaper-overlay">
-        <span>Cyberpunk Night</span>
-        <a href="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920" download target="_blank" class="dl-btn">Download 4K</a>
-      </div>
-    </div>
-
-    <!-- Wallpaper Item 3 -->
-    <div class="wallpaper-card">
-      <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800" alt="Sunset Aesthetics" loading="lazy">
-      <div class="wallpaper-overlay">
-        <span>Anime Sunset</span>
-        <a href="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1920" download target="_blank" class="dl-btn">Download 4K</a>
-      </div>
-    </div>
-<!-- Wallpaper Item 4 -->
-<div class="wallpaper-card">
-  <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800" alt="Anime Nature" loading="lazy">
-  <div class="wallpaper-overlay">
-    <span>Mystic Forest</span>
-    <a href="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920" download target="_blank" class="dl-btn">Download 4K</a>
   </div>
-</div>
 
-<!-- Wallpaper Item 5 -->
-<div class="wallpaper-card">
-  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800" alt="Anime Beach Sunset" loading="lazy">
-  <div class="wallpaper-overlay">
-    <span>Ocean Chill</span>
-    <a href="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920" download target="_blank" class="dl-btn">Download 4K</a>
+  <!-- Dynamic Grid Container -->
+  <div id="animeWallpaperGrid" class="wallpaper-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+    <!-- Wallpapers Auto Loaded via API -->
   </div>
-</div>
 
-<!-- Wallpaper Item 6 -->
-<div class="wallpaper-card">
-  <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800" alt="Starry Sky Anime" loading="lazy">
-  <div class="wallpaper-overlay">
-    <span>Starry Night</span>
-    <a href="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920" download target="_blank" class="dl-btn">Download 4K</a>
-  </div>
-</div>
+  <!-- Load More Button -->
+  <div style="text-align: center; margin-top: 40px;">
+    <button id="loadMoreAnimeBtn" onclick="fetchAnimeWallpapers()" style="background: transparent; border: 2px solid #ff4b2b; color: #fff; padding: 12px 30px; border-radius: 30px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+      ✨ Load More Anime Wallpapers
+    </button>
   </div>
 </section>
     <div class="container">
