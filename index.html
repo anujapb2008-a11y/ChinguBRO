@@ -863,21 +863,19 @@
           <h2>A quiet corner of your favorite world.</h2>
           <p>Rain against the glass, a lamp on the desk, and lo-fi drifting through the room. Stay a while.</p>
 
-          <div class="player glass" id="player">
-            <button class="play-btn" id="playBtn" aria-label="Play">
-              <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-            <div class="player-body">
-              <div class="player-track">Midnight Study — Lo-Fi Mix</div>
-              <div class="player-sub">Cozy Lo-Fi · Rain</div>
-              <div class="progress"><i></i></div>
-            </div>
-            <div class="player-icons">
-              <button aria-label="Previous track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
-              <button aria-label="Next track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z"/></svg></button>
-              <button aria-label="Volume"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9v6h4l5 5V4L8 9z"/></svg></button>
-            </div>
-          </div>
+        <div class="lofi-main-card" style="display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 12px; max-width: 400px; border: 1px solid rgba(255,255,255,0.1); margin-top: 15px;">
+  <button id="mainPlayBtn" onclick="playPauseLofi()" style="background: #ff4b2b; border: none; color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 16px; cursor: pointer;">▶</button>
+  
+  <div style="flex-grow: 1;">
+    <h4 id="trackTitle" style="margin: 0; font-size: 14px; color: #fff;">Midnight Study — Lo-Fi Mix</h4>
+    <p id="trackArtist" style="margin: 4px 0 0; font-size: 12px; color: #aaa;">Cozy Lo-Fi · Rain</p>
+  </div>
+
+  <div style="display: flex; gap: 8px;">
+    <button onclick="prevTrack()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 6px; padding: 6px 10px; cursor: pointer;">⏮</button>
+    <button onclick="nextTrack()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 6px; padding: 6px 10px; cursor: pointer;">⏭</button>
+  </div>
+</div>
 
           <div class="btn-row" style="justify-content:flex-start; margin-top:1.8rem;">
             <a href="#mixer" class="btn btn-glass">Open Ambient Mixer</a>
