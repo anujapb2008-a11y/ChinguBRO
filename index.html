@@ -1213,28 +1213,61 @@
     if(!reduce) requestAnimationFrame(tick); else tick();
   })();
 </script>
-  <!-- Lofi Audio Player -->
-<div class="lofi-player">
-  <button id="playBtn" onclick="togglePlay()">🎵 Play Lofi Vibes</button>
-  <audio id="lofiAudio" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
-  </audio>
-</div>
-  <!-- Lofi Player Logic -->
+  <!-- Fully Functional Main Lofi Player Script -->
 <script>
-  function togglePlay() {
-    const audio = document.getElementById('lofiAudio');
-    const btn = document.getElementById('playBtn');
-    
-    if (audio.paused) {
-      audio.play();
-      btn.innerHTML = '⏸ Pause Lofi Vibes';
-      btn.style.borderColor = '#ff4b2b';
-    } else {
-      audio.pause();
-      btn.innerHTML = '🎵 Play Lofi Vibes';
-      btn.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+  // Lofi Track List
+  const lofiPlaylist = [
+    {
+      title: "Midnight Study — Lo-Fi Mix",
+      artist: "Cozy Lo-Fi · Rain",
+      src: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3"
+    },
+    {
+      title: "Chillhop Beats — Sunset",
+      artist: "Aesthetic Vibes",
+      src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3"
+    },
+    {
+      title: "Late Night Coding — Synth",
+      artist: "ChinguBRO Special",
+      src: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3"
     }
+  ];
+
+  let currentTrackIndex = 0;
+  let isPlaying = false;
+  const audioTrack = new Audio(lofiPlaylist[currentTrackIndex].src);
+
+  function playPauseLofi() {
+    const playIcon = document.getElementById('mainPlayBtn');
+    
+    if (isPlaying) {
+      audioTrack.pause();
+      isPlaying = false;
+      if(playIcon) playIcon.innerText = "▶";
+    } else {
+      audioTrack.play().then(() => {
+        isPlaying = true;
+        if(playIcon) playIcon.innerText = "⏸";
+      }).catch(err => console.error("Play error:", err));
+    }
+  }
+
+  function nextTrack() {
+    currentTrackIndex = (currentTrackIndex + 1) % lofiPlaylist.length;
+    loadAndPlayTrack();
+  }
+
+  function prevTrack() {
+    currentTrackIndex = (currentTrackIndex - 1 + lofiPlaylist.length) % lofiPlaylist.length;
+    loadAndPlayTrack();
+  }
+
+  function loadAndPlayTrack() {
+    audioTrack.src = lofiPlaylist[currentTrackIndex].src;
+    document.getElementById('trackTitle').innerText = lofiPlaylist[currentTrackIndex].title;
+    document.getElementById('trackArtist').innerText = lofiPlaylist[currentTrackIndex].artist;
+    if (isPlaying) audioTrack.play();
   }
 </script>
 </body>
